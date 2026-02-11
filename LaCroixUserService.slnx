@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="LaCroixUserService.Api/LaCroixUserService.Api.csproj" />
+  <Project Path="LaCroixUserService.Contracts/LaCroixUserService.Contracts.csproj" />
+  <Project Path="LaCroixUserService.Models/LaCroixUserService.Models.csproj" />
+</Solution>

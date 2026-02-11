@@ -1,0 +1,49 @@
+﻿using LaCroixUserService.Contracts.Enums;
+using System.ComponentModel.DataAnnotations;
+
+namespace LaCroixDataManagement.Api.Entities;
+
+/// <summary>
+/// Represents a user
+/// </summary>
+public class User
+{
+    /// <summary>
+    /// User's ID.
+    /// </summary>
+    [Key]
+    public int Id { get; set; }
+    /// <summary>
+    /// User's login.
+    /// </summary>
+    public required string Username { get; set; }
+    /// <summary>
+    /// Hash of the user's password.
+    /// </summary>
+    public required string PasswordHash { get; set; }
+
+    /// <summary>
+    /// User's name.
+    /// </summary>
+    public string Name { get; set; } = string.Empty;
+    /// <summary>
+    /// User's gender.
+    /// </summary>
+    public Gender Gender { get; set; }
+    /// <summary>
+    /// User's date of birth.
+    /// </summary>
+    public DateTime? Birthday { get; set; }
+
+    /// <summary>
+    /// Date of the user's creation.
+    /// </summary>
+    public DateTime CreatedDate { get; set; } = DateTime.Now;
+    /// <summary>
+    /// Date of the last modification made to this record.
+    /// </summary>
+    public DateTime? UpdatedDate { get; set; }
+
+    public Status Status { get; set; }
+    public UserRole Role { get; set; }
+}
