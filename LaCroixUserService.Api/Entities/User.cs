@@ -1,7 +1,7 @@
 ﻿using LaCroixUserService.Contracts.Enums;
 using System.ComponentModel.DataAnnotations;
 
-namespace LaCroixDataManagement.Api.Entities;
+namespace LaCroixUserService.Api.Entities;
 
 /// <summary>
 /// Represents a user
@@ -17,6 +17,10 @@ public class User
     /// User's login.
     /// </summary>
     public required string Username { get; set; }
+    /// <summary>
+    /// User's email.
+    /// </summary>
+    public required string Email { get; set; }
     /// <summary>
     /// Hash of the user's password.
     /// </summary>
