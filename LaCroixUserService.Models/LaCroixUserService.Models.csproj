@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\LaCroixUserService.Contracts\LaCroixUserService.Contracts.csproj" />
+  </ItemGroup>
+
 </Project>
