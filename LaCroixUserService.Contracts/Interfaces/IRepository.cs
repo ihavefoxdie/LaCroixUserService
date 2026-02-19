@@ -1,4 +1,4 @@
-﻿namespace LaCroixUserService.Contracts.Interfaces;
+﻿namespace LaCroix.UserService.Contracts.Interfaces;
 
 public interface IRepository<T>
 {

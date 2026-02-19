@@ -1,7 +1,7 @@
-﻿using LaCroixUserService.Api.Entities;
-using LaCroixUserService.Contracts.Interfaces;
+﻿using LaCroix.UserService.Api.Entities;
+using LaCroix.UserService.Contracts.Interfaces;
 
-namespace LaCroixUserService.Api.Repositories.Interface
+namespace LaCroix.UserService.Api.Repositories.Interface
 {
     public interface IUserRepository : IRepository<User>;
 }

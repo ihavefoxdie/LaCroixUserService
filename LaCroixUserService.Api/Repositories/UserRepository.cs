@@ -1,9 +1,9 @@
-﻿using LaCroixUserService.Api.Data;
-using LaCroixUserService.Api.Entities;
-using LaCroixUserService.Api.Repositories.Interface;
+﻿using LaCroix.UserService.Api.Data;
+using LaCroix.UserService.Api.Entities;
+using LaCroix.UserService.Api.Repositories.Interface;
 using Microsoft.EntityFrameworkCore;
 
-namespace LaCroixUserService.Api.Repositories;
+namespace LaCroix.UserService.Api.Repositories;
 
 public class UserRepository : IUserRepository, IDisposable
 {

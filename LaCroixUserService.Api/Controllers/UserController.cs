@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
-using LaCroixUserService.Api.Entities;
-using LaCroixUserService.Api.Repositories.Interface;
-using LaCroixUserService.Models;
+using LaCroix.UserService.Api.Entities;
+using LaCroix.UserService.Api.Repositories.Interface;
+using LaCroix.UserService.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace LaCroixUserService.Api.Controllers;
+namespace LaCroix.UserService.Api.Controllers;
 
 [Route("api/[controller]/[action]")]
 [ApiController]

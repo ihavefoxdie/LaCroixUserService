@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using LaCroixUserService.Api.Entities;
-using LaCroixUserService.Models;
+using LaCroix.UserService.Api.Entities;
+using LaCroix.UserService.Models;
 
-namespace LaCroixUserService.Api.Mappings;
+namespace LaCroix.UserService.Api.Mappings;
 
 public class UserMappingProfile : Profile
 {

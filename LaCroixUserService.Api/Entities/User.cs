@@ -1,7 +1,7 @@
-﻿using LaCroixUserService.Contracts.Enums;
+﻿using LaCroix.UserService.Contracts.Enums;
 using System.ComponentModel.DataAnnotations;
 
-namespace LaCroixUserService.Api.Entities;
+namespace LaCroix.UserService.Api.Entities;
 
 /// <summary>
 /// Represents a user

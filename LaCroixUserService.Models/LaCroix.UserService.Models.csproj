@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LaCroixUserService.Contracts\LaCroixUserService.Contracts.csproj" />
+    <ProjectReference Include="..\LaCroixUserService.Contracts\LaCroix.UserService.Contracts.csproj" />
   </ItemGroup>
 
 </Project>

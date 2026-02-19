@@ -1,4 +1,4 @@
-﻿namespace LaCroixUserService.Contracts.Enums
+﻿namespace LaCroix.UserService.Contracts.Enums
 {
     public enum Status
     {

@@ -1,6 +1,21 @@
-var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
+using AutoMapper;
+using LaCroix.UserService.Api.Entities;
+using LaCroix.UserService.Api.Repositories;
+using LaCroix.UserService.Api.Repositories.Interface;
+using LaCroix.UserService.Models;
 
-app.MapGet("/", () => "Hello World!");
+var builder = WebApplication.CreateBuilder(args);
+
+
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddControllers();
+var config = new MapperConfiguration(cfg =>
+{
+    cfg.CreateMap<UserDTO, User>();
+}, null);
+config.AssertConfigurationIsValid();
+
+
+var app = builder.Build();
 
 app.Run();

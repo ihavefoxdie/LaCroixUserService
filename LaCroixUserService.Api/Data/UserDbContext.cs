@@ -1,7 +1,7 @@
-﻿using LaCroixUserService.Api.Entities;
+﻿using LaCroix.UserService.Api.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace LaCroixUserService.Api.Data
+namespace LaCroix.UserService.Api.Data
 {
     public class UserDbContext(DbContextOptions<UserDbContext> options) : DbContext(options)
     {

@@ -14,8 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LaCroixUserService.Contracts\LaCroixUserService.Contracts.csproj" />
-    <ProjectReference Include="..\LaCroixUserService.Models\LaCroixUserService.Models.csproj" />
+    <ProjectReference Include="..\LaCroixUserService.Contracts\LaCroix.UserService.Contracts.csproj" />
+    <ProjectReference Include="..\LaCroixUserService.Models\LaCroix.UserService.Models.csproj" />
   </ItemGroup>
 
 </Project>
