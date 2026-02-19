@@ -2,5 +2,5 @@
 
 namespace LaCroixUserService.Models
 {
-    public record class UserDTO(string UserName, string Email, string Name, Gender Gender, DateTime? Birthday);
+    public record class UserDTO(int Id, string UserName, string Email, string Name, Gender Gender, DateTime? Birthday);
 }
