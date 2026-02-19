@@ -72,20 +72,20 @@ public class UserController : ControllerBase
     }
 
     [HttpPut]
-    public async Task<ActionResult<UserDTO>> UpdateUser(UserDTO userDTO, string password)
+    public async Task<ActionResult<UserDTO>> UpdateUser([FromBody] UpdateUserRequest updateUserRequest)
     {
-        User? user = await _userRepository.GetById(userDTO.Id);
+        User? user = await _userRepository.GetById(updateUserRequest.Id);
         if (user is null)
         {
             return NotFound();
         }
 
-        user.Username = userDTO.UserName;
-        user.Email = userDTO.Email;
-        user.PasswordHash = string.IsNullOrEmpty(password) ? user.PasswordHash : password;
-        user.Name = userDTO.Name;
-        user.Gender = userDTO.Gender;
-        user.Birthday = userDTO.Birthday;
+        user.Username = updateUserRequest.Username;
+        user.Email = updateUserRequest.Email;
+        user.PasswordHash = string.IsNullOrEmpty(updateUserRequest.Password) ? user.PasswordHash : _passwordHasher.Hash(updateUserRequest.Password);
+        user.Name = updateUserRequest.Name;
+        user.Gender = updateUserRequest.Gender;
+        user.Birthday = updateUserRequest.Birthday;
         user.UpdatedDate = DateTime.UtcNow;
 
         User? updatedUser = await _userRepository.Update(user);
