@@ -25,16 +25,16 @@ public class UserController : ControllerBase
 
 
     [HttpPost]
-    public async Task<ActionResult<UserDTO>> CreateUser(UserDTO userDto, string password)
+    public async Task<ActionResult<UserDTO>> CreateUser([FromBody] CreateUserRequest createUserRequest)
     {
         User user = new()
         {
-            Username = userDto.UserName,
-            Email = userDto.Email,
-            PasswordHash = _passwordHasher.Hash(password),
-            Name = userDto.Name,
-            Gender = userDto.Gender,
-            Birthday = userDto.Birthday,
+            Username = createUserRequest.Username,
+            Email = createUserRequest.Email,
+            PasswordHash = _passwordHasher.Hash(createUserRequest.Password),
+            Name = createUserRequest.Name,
+            Gender = createUserRequest.Gender,
+            Birthday = createUserRequest.Birthday,
             CreatedDate = DateTime.UtcNow,
             Status = Status.Active,
             Role = UserRole.User
