@@ -1,6 +1,7 @@
-﻿using AutoMapper;
-using LaCroix.UserService.Api.Entities;
+﻿using LaCroix.UserService.Api.Entities;
+using LaCroix.UserService.Api.Mappings;
 using LaCroix.UserService.Api.Repositories.Interface;
+using LaCroix.UserService.Contracts.Enums;
 using LaCroix.UserService.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,28 +12,38 @@ namespace LaCroix.UserService.Api.Controllers;
 public class UserController : ControllerBase
 {
     private readonly IUserRepository _userRepository;
-    private readonly IMapper _mapper;
 
-    public UserController(IUserRepository userRepository, IMapper mapper)
+    public UserController(IUserRepository userRepository)
     {
         _userRepository = userRepository;
-        _mapper = mapper;
     }
 
 
 
 
     [HttpPost]
-    public async Task<ActionResult<UserDTO>> CreateUser(UserDTO userDTO)
+    public async Task<ActionResult<UserDTO>> CreateUser(UserDTO userDto, string password)
     {
-        User user = _mapper.Map<User>(userDTO);
-        User createdUser = await _userRepository.Add(user);
+        User user = new()
+        {
+            Username = userDto.UserName,
+            Email = userDto.Email,
+            PasswordHash = password,
+            Name = userDto.Name,
+            Gender = userDto.Gender,
+            Birthday = userDto.Birthday,
+            CreatedDate = DateTime.UtcNow,
+            Status = Status.Active,
+            Role = UserRole.User
+        };
+
+        User? createdUser = await _userRepository.Add(user);
         if (createdUser == null)
         {
             return BadRequest();
         }
 
-        UserDTO createdUserDTO = _mapper.Map<UserDTO>(createdUser);
+        UserDTO createdUserDTO = UserMapping.UserToUserDTO(createdUser);
         return CreatedAtAction(nameof(GetUserById), new { id = createdUser.Id }, createdUserDTO);
     }
 
@@ -43,7 +54,7 @@ public class UserController : ControllerBase
         if (user is null) {
             return NotFound();
         }
-        UserDTO? userDTO = _mapper.Map<UserDTO>(user);
+        UserDTO? userDTO = UserMapping.UserToUserDTO(user);
 
         return Ok(userDTO);
     }
@@ -52,24 +63,38 @@ public class UserController : ControllerBase
     public async Task<ActionResult<IEnumerable<UserDTO>>> GetAllUsers()
     {
         IEnumerable<User> users = await _userRepository.GetAll();
-        IEnumerable<UserDTO> userDTOs = _mapper.Map<IEnumerable<UserDTO>>(users);
+        IEnumerable<UserDTO> userDTOs = UserMapping.UsersToUserDTOs(users);
 
         return Ok(userDTOs);
     }
 
     [HttpPut]
-    public async Task<ActionResult<UserDTO>> UpdateUser(UserDTO userDTO)
+    public async Task<ActionResult<UserDTO>> UpdateUser(UserDTO userDTO, string password)
     {
-        User user = _mapper.Map<User>(userDTO);
-        User? updatedUser = await _userRepository.Update(user);
-        if (updatedUser == null)
+        User? user = await _userRepository.GetById(userDTO.Id);
+        if (user is null)
         {
             return NotFound();
         }
 
-        UserDTO updatedUserDTO = _mapper.Map<UserDTO>(updatedUser);
+        user.Username = userDTO.UserName;
+        user.Email = userDTO.Email;
+        user.PasswordHash = string.IsNullOrEmpty(password) ? user.PasswordHash : password;
+        user.Name = userDTO.Name;
+        user.Gender = userDTO.Gender;
+        user.Birthday = userDTO.Birthday;
+        user.UpdatedDate = DateTime.UtcNow;
+
+        User? updatedUser = await _userRepository.Update(user);
+        if (updatedUser == null)
+        {
+            return BadRequest();
+        }
+
+        UserDTO updatedUserDTO = UserMapping.UserToUserDTO(updatedUser);
         return Ok(updatedUserDTO);
     }
+
      [HttpDelete]
      public async Task<IActionResult> DeleteUser(int id)
      {
