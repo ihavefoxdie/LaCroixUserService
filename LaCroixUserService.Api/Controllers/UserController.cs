@@ -2,6 +2,7 @@
 using LaCroix.UserService.Api.Mappings;
 using LaCroix.UserService.Api.Repositories.Interface;
 using LaCroix.UserService.Contracts.Enums;
+using LaCroix.UserService.Contracts.Interfaces;
 using LaCroix.UserService.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,10 +13,12 @@ namespace LaCroix.UserService.Api.Controllers;
 public class UserController : ControllerBase
 {
     private readonly IUserRepository _userRepository;
+    private readonly IPasswordHasher _passwordHasher;
 
-    public UserController(IUserRepository userRepository)
+    public UserController(IUserRepository userRepository, IPasswordHasher passwordHasher)
     {
         _userRepository = userRepository;
+        _passwordHasher = passwordHasher;
     }
 
 
@@ -28,7 +31,7 @@ public class UserController : ControllerBase
         {
             Username = userDto.UserName,
             Email = userDto.Email,
-            PasswordHash = password,
+            PasswordHash = _passwordHasher.Hash(password),
             Name = userDto.Name,
             Gender = userDto.Gender,
             Birthday = userDto.Birthday,
