@@ -10,9 +10,10 @@ public static class UserMapping
         return new UserDTO
         (
             user.Id,
-            user.Username,
+            user.Nickname,
             user.Email,
-            user.Name,
+            user.FirstName,
+            user.LastName,
             user.Gender,
             user.Birthday
         );

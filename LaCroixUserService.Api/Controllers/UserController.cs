@@ -29,10 +29,11 @@ public class UserController : ControllerBase
     {
         User user = new()
         {
-            Username = createUserRequest.Username,
+            Nickname = createUserRequest.Username,
             Email = createUserRequest.Email,
             PasswordHash = _passwordHasher.Hash(createUserRequest.Password),
-            Name = createUserRequest.Name,
+            FirstName = createUserRequest.FirstName,
+            LastName = createUserRequest.LastName,
             Gender = createUserRequest.Gender,
             Birthday = createUserRequest.Birthday,
             CreatedDate = DateTime.UtcNow,
@@ -51,7 +52,7 @@ public class UserController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<UserDTO>> GetUserById(int id)
+    public async Task<ActionResult<UserDTO>> GetUserById(Guid id)
     {
         User? user = await _userRepository.GetById(id);
         if (user is null) {
@@ -80,10 +81,10 @@ public class UserController : ControllerBase
             return NotFound();
         }
 
-        user.Username = updateUserRequest.Username;
+        user.Nickname = updateUserRequest.Username;
         user.Email = updateUserRequest.Email;
         user.PasswordHash = string.IsNullOrEmpty(updateUserRequest.Password) ? user.PasswordHash : _passwordHasher.Hash(updateUserRequest.Password);
-        user.Name = updateUserRequest.Name;
+        user.FirstName = updateUserRequest.FirstName;
         user.Gender = updateUserRequest.Gender;
         user.Birthday = updateUserRequest.Birthday;
         user.UpdatedDate = DateTime.UtcNow;
@@ -99,7 +100,7 @@ public class UserController : ControllerBase
     }
 
      [HttpDelete]
-     public async Task<IActionResult> DeleteUser(int id)
+     public async Task<IActionResult> DeleteUser(Guid id)
      {
          await _userRepository.Delete(id);
          return NoContent();

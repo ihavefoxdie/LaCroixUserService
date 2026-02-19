@@ -6,7 +6,7 @@ namespace LaCroix.UserService.Models
     public class UpdateUserRequest
     {
         [Required]
-        public required int Id { get; set; }
+        public required Guid Id { get; set; }
 
         [Required]
         public required string Username { get; set; }
@@ -14,7 +14,9 @@ namespace LaCroix.UserService.Models
         [Required, EmailAddress]
         public required string Email {  get; set; }
 
-        public string Name { get; set; } = string.Empty;
+        public string FirstName { get; set; } = string.Empty;
+
+        public string LastName { get; set; } = string.Empty;
 
         [Required, MinLength(8)]
         public required string Password { get; set; }

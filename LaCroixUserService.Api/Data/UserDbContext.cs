@@ -12,8 +12,8 @@ namespace LaCroix.UserService.Api.Data
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<User>().HasData(new User
             {
-                Id = 1,
-                Username = "admin",
+                Id = new Guid(),
+                Nickname = "admin",
                 Email = "admin@admin.admin",
                 PasswordHash = "$2a$12$cM50rnz.gJIlKfPwfl5gAu9zJRaZOp2cHn0cvOkQPTUwdscJ76yIG", //qwerty123
                 Role = Contracts.Enums.UserRole.Admin,

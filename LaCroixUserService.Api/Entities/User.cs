@@ -12,11 +12,11 @@ public class User
     /// User's ID.
     /// </summary>
     [Key]
-    public int Id { get; set; }
+    public Guid Id { get; set; }
     /// <summary>
     /// User's login.
     /// </summary>
-    public required string Username { get; set; }
+    public required string Nickname { get; set; }
     /// <summary>
     /// User's email.
     /// </summary>
@@ -29,7 +29,11 @@ public class User
     /// <summary>
     /// User's name.
     /// </summary>
-    public string Name { get; set; } = string.Empty;
+    public string FirstName { get; set; } = string.Empty;
+    /// <summary>
+    /// User's surname.
+    /// </summary>
+    public string LastName { get; set; } = string.Empty;
     /// <summary>
     /// User's gender.
     /// </summary>

@@ -30,7 +30,7 @@ public class UserRepository : IUserRepository, IDisposable
         return await _userDbContext.Users.AsNoTracking().ToListAsync();
     }
 
-    public async Task<User?> GetById(int id)
+    public async Task<User?> GetById(Guid id)
     {
         User? foundUser = await _userDbContext.Users.FirstOrDefaultAsync(x => x.Id == id);
 
@@ -48,10 +48,11 @@ public class UserRepository : IUserRepository, IDisposable
 
         if (foundUser != null)
         {
-            foundUser.Username = entity.Username;
+            foundUser.Nickname = entity.Nickname;
             foundUser.Email = entity.Email;
             foundUser.PasswordHash = entity.PasswordHash;
-            foundUser.Name = entity.Name;
+            foundUser.FirstName = entity.FirstName;
+            foundUser.LastName = entity.LastName;
             foundUser.Gender = entity.Gender;
             foundUser.Birthday = entity.Birthday;
             foundUser.UpdatedDate = DateTime.UtcNow;
@@ -62,7 +63,7 @@ public class UserRepository : IUserRepository, IDisposable
         }
         return foundUser;
     }
-    public async Task Delete(int id)
+    public async Task Delete(Guid id)
     {
         User? foundUser = await _userDbContext.Users.FirstOrDefaultAsync(x => x.Id == id);
 
