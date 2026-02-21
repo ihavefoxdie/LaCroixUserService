@@ -1,4 +1,6 @@
 <Solution>
+  <Project Path="LaCroix.UserService.Application/LaCroix.UserService.Application.csproj" Id="e5256f61-44eb-4948-835e-dd3b6cdf961d" />
+  <Project Path="LaCroix.UserService.Domain/LaCroix.UserService.Domain.csproj" Id="1395d320-1267-40c7-b835-a48ba4570709" />
   <Project Path="LaCroixUserService.Api/LaCroix.UserService.Api.csproj" />
   <Project Path="LaCroixUserService.Contracts/LaCroix.UserService.Contracts.csproj" />
   <Project Path="LaCroixUserService.Models/LaCroix.UserService.Models.csproj" />
