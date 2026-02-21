@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace LaCroix.UserService.Domain.Users;
+﻿namespace LaCroix.UserService.Domain.Users;
 
 /// <summary>
 /// Represents a user
@@ -25,7 +23,6 @@ public class User
     /// <summary>
     /// User's ID.
     /// </summary>
-    [Key]
     public Guid Id { get; init; }
     /// <summary>
     /// User's login.
@@ -34,7 +31,6 @@ public class User
     /// <summary>
     /// User's email.
     /// </summary>
-    [EmailAddress]
     public Email Email { get; private set; }
     /// <summary>
     /// Hash of the user's password.
