@@ -5,11 +5,11 @@
 /// </summary>
 public class User
 {
-    public User(string nickname, string email, string passwordHash, string firstName, string lastName, Gender gender, DateTime? birthday, Status status = Status.Active, UserRole role = UserRole.User)
+    public User(string nickname, Email email, string passwordHash, string? firstName, string? lastName, Gender? gender, DateTime? birthday, Status status = Status.Active, UserRole role = UserRole.User)
     {
         Id = new Guid();
         Nickname = nickname;
-        Email = new (email);
+        Email = email;
         PasswordHash = passwordHash;
         FirstName = firstName;
         LastName = lastName;
@@ -40,15 +40,15 @@ public class User
     /// <summary>
     /// User's name.
     /// </summary>
-    public string FirstName { get; set; } = string.Empty;
+    public string? FirstName { get; set; }
     /// <summary>
     /// User's surname.
     /// </summary>
-    public string LastName { get; set; } = string.Empty;
+    public string? LastName { get; set; }
     /// <summary>
     /// User's gender.
     /// </summary>
-    public Gender Gender { get; set; }
+    public Gender? Gender { get; set; }
     /// <summary>
     /// User's date of birth.
     /// </summary>
