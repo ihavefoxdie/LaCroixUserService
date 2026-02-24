@@ -1,4 +1,4 @@
-﻿namespace LaCroix.UserService.RabbitMq.Contracts.Enums;
+﻿namespace PostService.RabbitMQ.Enums;
 
 public enum OperationTypes
 {

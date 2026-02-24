@@ -8,6 +8,7 @@ using LaCroix.UserService.Infrastructure.Security;
 using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi;
+using PostService.RabbitMQ.Contracts;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,7 +37,13 @@ builder.Services.AddMassTransit(mTconfigurator =>
             h.Password(builder.Configuration["MessageBroker:Password"]);
         });
 
-        configurator.ConfigureEndpoints(context);
+        //configurator.ConfigureEndpoints(context);
+
+        // Настройка exchange для конкретного типа сообщения
+        configurator.Message<UserMQEvent>(x =>
+        {
+            x.SetEntityName("PostService.RabbitMQ.Contracts:UserMQEvent"); // Имя exchange
+        });
     });
 });
 
