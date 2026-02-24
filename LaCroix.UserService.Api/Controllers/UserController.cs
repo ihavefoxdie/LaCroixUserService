@@ -1,8 +1,9 @@
 ﻿using LaCroix.UserService.Application.Contracts;
 using LaCroix.UserService.Application.UseCases;
-using LaCroix.UserService.RabbitMq.Contracts;
 using MassTransit;
 using Microsoft.AspNetCore.Mvc;
+using PostService.RabbitMQ.Contracts;
+using PostService.RabbitMQ.Enums;
 
 namespace LaCroix.UserService.Api.Controllers;
 
@@ -26,15 +27,18 @@ public class UserController : ControllerBase
         {
             Guid userId = await _userMediator.SendAsync<UserRegisterRequest, Guid>(userRegisterRequest, cancellationToken);
 
-            await _publishEndpoint.Publish(new UserMQEvent(
-                userId, 
-                userRegisterRequest.Nickname,
-                userRegisterRequest.FirstName,
-                userRegisterRequest.LastName,
-                userRegisterRequest.Email,
-                RabbitMq.Contracts.Enums.OperationTypes.Create,
-                DateTime.UtcNow
-                ), cancellationToken);
+            var user = new UserMQEvent()
+            {
+                ID = userId,
+                Nickname = userRegisterRequest.Nickname,
+                Name = userRegisterRequest.FirstName,
+                LastName = userRegisterRequest.LastName,
+                Email = userRegisterRequest.Email,
+                Operation = OperationTypes.Create,
+                OperationTime = DateTime.UtcNow
+            };
+
+            await _publishEndpoint.Publish(user, cancellationToken);
 
             return Ok(userId);
         }

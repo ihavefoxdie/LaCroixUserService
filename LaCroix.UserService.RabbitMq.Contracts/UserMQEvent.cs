@@ -1,13 +1,17 @@
-﻿using LaCroix.UserService.RabbitMq.Contracts.Enums;
+﻿
 
-namespace LaCroix.UserService.RabbitMq.Contracts;
+using PostService.RabbitMQ.Enums;
 
-public record UserMQEvent(
-    Guid ID,
-    string Nickname,
-    string Name,
-    string LastName,
-    string Email,
-    OperationTypes Operation,
-    DateTime OperationTime
-);
+namespace PostService.RabbitMQ.Contracts
+{
+    public record UserMQEvent
+    {
+        public Guid ID { get; set; }
+        public string Nickname { get; set; }
+        public string Name { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
+        public OperationTypes Operation { get; set; }
+        public DateTime OperationTime { get; set; }
+    }
+}
