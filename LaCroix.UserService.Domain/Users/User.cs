@@ -5,11 +5,11 @@
 /// </summary>
 public class User
 {
-    public User(string nickname, Email email, string passwordHash, string? firstName, string? lastName, Gender? gender, DateTime? birthday, Status status = Status.Active, UserRole role = UserRole.User)
+    public User(string nickname, string email, string passwordHash, string? firstName, string? lastName, Gender? gender, DateTime? birthday, Status status = Status.Active, UserRole role = UserRole.User)
     {
-        Id = new Guid();
+        Id = Guid.NewGuid();
         Nickname = nickname;
-        Email = email;
+        Email = new Email(email);
         PasswordHash = passwordHash;
         FirstName = firstName;
         LastName = lastName;
@@ -19,6 +19,10 @@ public class User
         Role = role;
     }
 
+    private User()
+    {
+        
+    }
 
     /// <summary>
     /// User's ID.
@@ -57,7 +61,7 @@ public class User
     /// <summary>
     /// Date of the user's creation.
     /// </summary>
-    public DateTime CreatedDate { get; init; } = DateTime.Now;
+    public DateTime CreatedDate { get; init; } = DateTime.UtcNow;
     /// <summary>
     /// Date of the last modification made to this record.
     /// </summary>

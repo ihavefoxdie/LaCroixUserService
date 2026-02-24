@@ -31,7 +31,7 @@ public class UserRegisterHandler : IRequestHandler<UserRegisterRequest, Guid>
 
         User user = new(
             nickname: userRegisterRequest.Nickname,
-            email: email,
+            email: userRegisterRequest.Email,
             firstName: userRegisterRequest.FirstName,
             lastName: userRegisterRequest.LastName,
             passwordHash: passwordHash,

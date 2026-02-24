@@ -6,20 +6,22 @@ namespace LaCroix.UserService.Domain.Users;
 
 public sealed class Email : IEquatable<Email>
 {
-    public string Value { get; }
+    public string Value { get; private set; }
 
-    public Email(string email)
+    public Email(string value)
     {
-        if (string.IsNullOrWhiteSpace(email))
-            throw new ArgumentException("Email cannot be empty.", nameof(email));
+        if (string.IsNullOrWhiteSpace(value))
+            throw new ArgumentException("Email cannot be empty.", nameof(value));
 
-        email = email.Trim();
+        value = value.Trim();
 
-        if (!IsValid(email))
-            throw new ArgumentException("Invalid email format.", nameof(email));
+        if (!IsValid(value))
+            throw new ArgumentException("Invalid email format.", nameof(value));
 
-        Value = email;
+        Value = value;
     }
+
+    private Email() { }
 
     //TODO : Implement a more robust email validation logic
     private static bool IsValid(string value)
