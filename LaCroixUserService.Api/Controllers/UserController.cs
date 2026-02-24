@@ -6,7 +6,7 @@ using LaCroix.UserService.Contracts.Interfaces;
 using LaCroix.UserService.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace LaCroix.UserService.Api.Controllers;
+namespace Controllers;
 
 [Route("api/[controller]/[action]")]
 [ApiController]
