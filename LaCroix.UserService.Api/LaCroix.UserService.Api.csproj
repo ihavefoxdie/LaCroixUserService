@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>e3a05c06-e573-44af-812e-5092d01b959e</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MassTransit.RabbitMQ" Version="9.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.23.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="10.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LaCroix.UserService.Application\LaCroix.UserService.Application.csproj" />
+    <ProjectReference Include="..\LaCroix.UserService.Domain\LaCroix.UserService.Domain.csproj" />
+    <ProjectReference Include="..\LaCroix.UserService.Infrastructure\LaCroix.UserService.Infrastructure.csproj" />
+    <ProjectReference Include="..\LaCroix.UserService.RabbitMq.Contracts\LaCroix.UserService.RabbitMq.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>
