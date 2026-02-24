@@ -2,6 +2,7 @@
   <Project Path="LaCroix.UserService.Application/LaCroix.UserService.Application.csproj" Id="e5256f61-44eb-4948-835e-dd3b6cdf961d" />
   <Project Path="LaCroix.UserService.Domain/LaCroix.UserService.Domain.csproj" Id="1395d320-1267-40c7-b835-a48ba4570709" />
   <Project Path="LaCroix.UserService.Infrastructure/LaCroix.UserService.Infrastructure.csproj" Id="ceb59e13-7111-416d-a8e1-970cf4bf4ff9" />
+  <Project Path="LaCroix.UserService.RabbitMq.Contracts/LaCroix.UserService.RabbitMq.Contracts.csproj" Id="7f48fe9c-64c2-41c8-ade9-0215e28b6e2c" />
   <Project Path="LaCroixUserService.Api/[Depricated]LaCroix.UserService.Api.csproj" />
   <Project Path="LaCroixUserService.Contracts/[Depricated]LaCroix.UserService.Contracts.csproj" />
   <Project Path="LaCroixUserService.Models/[Depricated]LaCroix.UserService.Models.csproj" />
